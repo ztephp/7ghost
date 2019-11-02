@@ -1,9 +1,9 @@
 <?php
-//ÊäÈë
+//è¾“å…¥
 function _e($str){
 	echo $str;
 }
-//Ä£°æ
+//æ¨¡ç‰ˆ
 function tpl($name){
 	return ADIR.'template/'.$name.'.php';
 }
@@ -21,7 +21,7 @@ function d($name){
     }
     return $instance[$name];
 }
-//´¦Àí±äÁ¿
+//å¤„ç†å˜é‡
 /**
  * {g:a} = $_GET['a']
  * {p:a} = $_POST['a']
@@ -54,7 +54,27 @@ function siteUri(){
 	$sitefolder=explode('.php', $_SERVER['PHP_SELF']);
 	return trim(dirname($sitefolder[0]),DIRECTORY_SEPARATOR).'/';
 }
-	
+
+//èŽ·å¾—é‡å†™çš„uri
+function getUri() {
+  if (isset($_SERVER['HTTP_X_REWRITE_URL'])) { 
+     // check this first so IIS will catch 
+     $requestUri = $_SERVER['HTTP_X_REWRITE_URL']; 
+   } elseif (isset($_SERVER['REDIRECT_URL'])) { 
+     // Check if using mod_rewrite 
+     $requestUri = $_SERVER['REDIRECT_URL']; 
+   } elseif (isset($_SERVER['REQUEST_URI'])) { 
+     $requestUri = $_SERVER['REQUEST_URI']; 
+   } elseif (isset($_SERVER['ORIG_PATH_INFO'])) { 
+     // IIS 5.0, PHP as CGI 
+     $requestUri = $_SERVER['ORIG_PATH_INFO']; 
+     if (!empty($_SERVER['QUERY_STRING'])) { 
+       $requestUri .= '?' . $_SERVER['QUERY_STRING']; 
+     } 
+   } 
+   return $requestUri; 
+ }
+ 
 function send_header($headers,$cookies=1){
 	$return;
 	if(is_array($headers))
@@ -138,7 +158,7 @@ function get_ip(){
     return $ip;   
 }
 /**
- * mdir¼ÓÇ¿°æ,Ö§³Ö¶àÖØÎÄ¼þ¼Ð½¨Á¢
+ * mdiråŠ å¼ºç‰ˆ,æ”¯æŒå¤šé‡æ–‡ä»¶å¤¹å»ºç«‹
 */
 function mdir2($path){
 	$path2 = $path;
@@ -147,13 +167,15 @@ function mdir2($path){
 	}
 	foreach (explode('/',str_replace($path2, '', $path)) as $value){
 		$path2 .= $value.'/';
-		if(!is_dir($path2))
-			@mkdir($path2, 0777); 
+		if(!is_dir($path2)) {
+		mkdir($path2, 0777,true);
+        chmod($path2, 0777);
+		}
 	}
 }
 
 /**
- * ±£´æÎÄ¼þ
+ * ä¿å­˜æ–‡ä»¶
  */
 function save_file($filename,$data){
 	$pathinfo = pathinfo($filename);
@@ -161,6 +183,6 @@ function save_file($filename,$data){
 		return false;
 	}
 	mdir2(dirname($filename));
-	file_put_contents($filename, $data);
+    @file_put_contents($filename, $data);
 }	
 ?>

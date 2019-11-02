@@ -1,9 +1,9 @@
 <?php return array (
-  'password' => '7ghost',
+  'password' => '123456',
   'host' => 'http://www.google.com/',
-  'replaceDomain' => '0',
-  'relativeHTML' => '0',
-  'relativeCSS' => '0',
+  'replaceDomain' => '1',
+  'relativeHTML' => '1',
+  'relativeCSS' => '1',
   'static' => '0',
   'diyStatic' => 'css|js|html|png|jpg',
   'cookies' => '0',
