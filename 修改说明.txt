@@ -31,3 +31,31 @@ RewriteRule . /index.php [L]
 ###end
 
 =================================================
+
+修订：shadoweb
+
+修订说明：
+
+
+nginx伪静态添加：
+### nginx.conf
+if (!-f $uri){
+	set $rule_0 1$rule_0;
+}
+if (!-d $uri){
+	set $rule_0 2$rule_0;
+}
+if ($rule_0 = "21"){
+	rewrite ^/(?!_admin)(.*)$ /index.php/$1;
+}
+###end
+### nginx2.conf
+	rewrite ^/(?!_admin)(.*)$ /index.php/$1;
+###end
+
+
+修复文件缓存,优化部分功能细节
+其它BUG修复
+
+后续计划优化其它功能.然后尽量支持php7+环境.目前php5.4没问题
+=================================================
