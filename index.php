@@ -28,13 +28,50 @@
 	$url = $config['host'].$uri;
 	//当前请求的文件后缀
 	$thisExt = pathinfo($_SERVER['PATH_INFO'],PATHINFO_EXTENSION);
+	//文件类型输出判断
+	switch($thisExt)
+	{
+		case 'html':
+			header('Content-Type: text/html; charset=utf-8');
+		break;
+		case 'css':
+			header('Content-type: text/css');
+		break;
+		case 'js':
+			header('Content-type: text/javascript');
+		break;
+		case 'jpg':
+			header('Content-Type: image/jpeg');
+		break;
+		case 'png':
+			header('Content-Type: image/png');
+		break;
+		case 'gif':
+			header('Content-Type: image/gif');
+		break;
+		case 'json':
+			header('Content-type: application/json');
+		break;
+		case 'pdf':
+			header('Content-type: application/pdf');
+		break;
+		case 'xml':
+			header('Content-type: text/xml');
+		break;
+		case 'swf':
+			header('Content-Type: application/x-shockw**e-flash');
+		break;
+		default:
+			header('Content-Type: text/html; charset=utf-8');
+		break;
+	}
+	
 	//静态文件
 	if(in_array($thisExt,explode("|",$config['diyStatic']))){
 		$filename = dirname(ADIR).'/'.substr(getUri(),strlen(siteUri()));
-		//$filename = dirname(ADIR).'/'.substr($_SERVER['REDIRECT_URL'],strlen(siteUri()));
 		//如果存在，直接输出
 		if(is_file($filename)){
-			echo file_get_contents($filename,true);
+			echo file_get_contents($filename);
 			exit();
 		}
 	}
@@ -90,7 +127,6 @@
 	}
 	
 	//-------其他头信息 begin--
-	
 	//-------其他头信息 end----
 	
 	//是否补全链接
@@ -162,4 +198,3 @@
 	
 	//输出
 	echo $snoopy->results;
-	//echo htmlspecialchars($snoopy->results);
