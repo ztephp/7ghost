@@ -1,5 +1,5 @@
 <?php
-	header('Content-Type: text/html; charset=gbk');
+	header('Content-Type: text/html; charset=utf-8');
 	/**
 	 * 入口文件
 	 */
