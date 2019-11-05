@@ -13,7 +13,7 @@ class index{
 				header("Location:./?m=site&a=index");
 				exit();
 			}
-			echo "ÃÜÂë´íÎó";
+			echo "Î“Î¬Î’Î»Î„Î½ÎÏƒ";
 		}
 		include tpl('login');
 	}

@@ -13,7 +13,7 @@ class widget{
 		return $this;
 	}
 	
-	//×ª»»³É×Ö·û´®
+	//è½¬æ¢æˆå­—ç¬¦ä¸²
 	function __tostring(){
 		ob_star();
 		$this->e();
@@ -22,7 +22,7 @@ class widget{
 		return $out;
 	}
 	
-	//Êä³ö
+	//è¾“å‡º
 	function e(){
 		$info = $this->_info;
 		include(ADIR.'template/_widget/'.$this->_type.'.php');

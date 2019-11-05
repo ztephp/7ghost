@@ -1,19 +1,19 @@
 <?php
 class data{
 	/*
-	 * Êı¾İÂ·¾¶
+	 * æ•°æ®è·¯å¾„
 	 * @var string
 	 */
 	protected $_filePath;
 	
 	/**
-	 * ´æ´¢ÁÙÊ±Êı¾İ
+	 * å­˜å‚¨ä¸´æ—¶æ•°æ®
 	 * @var array
 	 */
 	protected $_data;
 	
 	/**
-	 * ±ê¼ÇĞŞ¸ÄµÄÊı¾İÏî
+	 * æ ‡è®°ä¿®æ”¹çš„æ•°æ®é¡¹
 	 * @var bool
 	 */
 	protected $_write=FALSE;
@@ -24,7 +24,7 @@ class data{
 	}
 	
 	/**
-	 * ¶ÁÈ¡ÎÄ¼şÄÚÈİ, ´æÈë_data
+	 * è¯»å–æ–‡ä»¶å†…å®¹, å­˜å…¥_data
 	 */
 	private function load(){
 		if(is_file($this->_filePath)){
@@ -34,7 +34,7 @@ class data{
 	
 	
 	/**
-	 * ÉèÖÃ¼üÖµÊı¾İ,²¢ÉèÖÃĞŞ¸Ä±ê¼Ç_write
+	 * è®¾ç½®é”®å€¼æ•°æ®,å¹¶è®¾ç½®ä¿®æ”¹æ ‡è®°_write
 	 * @param $field
 	 * @param $value
 	 */
@@ -54,7 +54,7 @@ class data{
 	}
 	
 	/**
-	 * »ñÈ¡Êı¾İ
+	 * è·å–æ•°æ®
 	 * @param String $field
 	 * @return mixed
 	 */
@@ -63,7 +63,7 @@ class data{
 	}
 	
 	/**
-	 * É¾³ıÊı¾İ
+	 * åˆ é™¤æ•°æ®
 	 * @param String $field
 	 */
 	function del($key=""){
@@ -76,9 +76,9 @@ class data{
 	}
 	
 	/**
-	 * Îö¹¹º¯Êı,¸ÄĞ´ÎÄ¼ş
+	 * ææ„å‡½æ•°,æ”¹å†™æ–‡ä»¶
 	 * 
-	 * ÅĞ¶Ï_writeÊÇ·ñÎªÕæ,¼õÉÙIO²Ù×÷
+	 * åˆ¤æ–­_writeæ˜¯å¦ä¸ºçœŸ,å‡å°‘IOæ“ä½œ
 	 */
 	function __destruct(){
 		if(!$this->_write)return;
@@ -91,7 +91,7 @@ class data{
 	}
 	
 	/**
-	 * Ä§Êõ·½·¨__get,»ñµÃ¼üÖµ
+	 * é­”æœ¯æ–¹æ³•__get,è·å¾—é”®å€¼
 	 * @param String $name
 	 */
 	public function __get($name){
@@ -99,7 +99,7 @@ class data{
 	}
 	
 	/**
-	 * Ä§Êõ·½·¨__set,ÉèÖÃ¼üÖµ
+	 * é­”æœ¯æ–¹æ³•__set,è®¾ç½®é”®å€¼
 	 * @param $name
 	 * @param $value
 	 */
