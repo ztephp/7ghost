@@ -2,7 +2,7 @@
 <?php include tpl('menu');?>
 	<div class="main">
 			<form action="" method="POST">
-				<h2 class="section-header">自定义页(<?php _e($page[name])?>)-编辑内容替换</h2>
+				<h2 class="section-header">自定义页(<?php _e($page['name'])?>)-编辑内容替换</h2>
 				<input type="hidden" name='rekey' value='<?php _e($_GET['rekey'])?>'></input>
 				<?php
 					w('text')->set('name','名称')

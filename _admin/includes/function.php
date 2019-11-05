@@ -168,8 +168,8 @@ function mdir2($path){
 	foreach (explode('/',str_replace($path2, '', $path)) as $value){
 		$path2 .= $value.'/';
 		if(!is_dir($path2)) {
-		mkdir($path2, 0755,true);
-        chmod($path2, 0755);
+		@mkdir($path2, 0755,true);
+        @chmod($path2, 0755);
 		}
 	}
 }

@@ -1,7 +1,7 @@
 <?php include tpl('header');?>
 <?php include tpl('menu');?>
 	<div class="main">
-		<h2 class="section-header">自定义页面(<?php _e($page[name])?>) - <a href="./?m=page&a=edit&key=<?php _e($_GET['key'])?>">基本</a>
+		<h2 class="section-header">自定义页面(<?php _e($page['name'])?>) - <a href="./?m=page&a=edit&key=<?php _e($_GET['key'])?>">基本</a>
 			 - <a href="./?m=page&a=Advanced&key=<?php _e($_GET['key'])?>">高级</a>
 			 - 内容替换
 		</h2>
