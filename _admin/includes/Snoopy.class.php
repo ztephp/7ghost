@@ -117,6 +117,19 @@ class Snoopy
         Output:		$this->results	the output text from the fetch
     \*======================================================================*/
 
+    function set_each(&$array){
+       $res = array();
+       $key = key($array);
+       if($key !== null){
+           next($array); 
+           $res[1] = $res['value'] = $array[$key];
+           $res[0] = $res['key'] = $key;
+       }else{
+           $res = false;
+       }
+       return $res;
+    }
+    
     function fetch($URI)
     {
 
@@ -173,7 +186,7 @@ class Snoopy
                         $frameurls = $this->_frameurls;
                         $this->_frameurls = array();
 
-                        while (list(, $frameurl) = each($frameurls)) {
+                        while (list(, $frameurl) = $this->set_each($frameurls)) {
                             if ($this->_framedepth < $this->maxframes) {
                                 $this->fetch($frameurl);
                                 $this->_framedepth++;
@@ -269,7 +282,7 @@ class Snoopy
                         $frameurls = $this->_frameurls;
                         $this->_frameurls = array();
 
-                        while (list(, $frameurl) = each($frameurls)) {
+                        while (list(, $frameurl) = $this->set_each($frameurls)) {
                             if ($this->_framedepth < $this->maxframes) {
                                 $this->fetch($frameurl);
                                 $this->_framedepth++;
@@ -467,12 +480,12 @@ class Snoopy
 
         // catenate the non-empty matches from the conditional subpattern
 
-        while (list($key, $val) = each($links[2])) {
+        while (list($key, $val) = $this->set_each($links[2])) {
             if (!empty($val))
                 $match[] = $val;
         }
 
-        while (list($key, $val) = each($links[3])) {
+        while (list($key, $val) = $this->set_each($links[3])) {
             if (!empty($val))
                 $match[] = $val;
         }
@@ -948,9 +961,9 @@ class Snoopy
         switch ($this->_submit_type) {
             case "application/x-www-form-urlencoded":
                 reset($formvars);
-                while (list($key, $val) = each($formvars)) {
+                while (list($key, $val) = $this->set_each($formvars)) {
                     if (is_array($val) || is_object($val)) {
-                        while (list($cur_key, $cur_val) = each($val)) {
+                        while (list($cur_key, $cur_val) = $this->set_each($val)) {
                             $postdata .= urlencode($key) . "[]=" . urlencode($cur_val) . "&";
                         }
                     } else
@@ -962,9 +975,9 @@ class Snoopy
                 $this->_mime_boundary = "Snoopy" . md5(uniqid(microtime()));
 
                 reset($formvars);
-                while (list($key, $val) = each($formvars)) {
+                while (list($key, $val) = $this->set_each($formvars)) {
                     if (is_array($val) || is_object($val)) {
-                        while (list($cur_key, $cur_val) = each($val)) {
+                        while (list($cur_key, $cur_val) = $this->set_each($val)) {
                             $postdata .= "--" . $this->_mime_boundary . "\r\n";
                             $postdata .= "Content-Disposition: form-data; name=\"$key\[\]\"\r\n\r\n";
                             $postdata .= "$cur_val\r\n";
@@ -977,9 +990,9 @@ class Snoopy
                 }
 
                 reset($formfiles);
-                while (list($field_name, $file_names) = each($formfiles)) {
+                while (list($field_name, $file_names) = $this->set_each($formfiles)) {
                     settype($file_names, "array");
-                    while (list(, $file_name) = each($file_names)) {
+                    while (list(, $file_name) = $this->set_each($file_names)) {
                         if (!is_readable($file_name)) continue;
 
                         $fp = fopen($file_name, "r");
