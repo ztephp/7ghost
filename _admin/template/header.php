@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
 <title>7ghost管理后台</title>
 <link rel="stylesheet" type="text/css" href="./static/core.css" />
 <script language="javascript" type="text/javascript" src="./static/jquery-1.5.1.min.js"></script> 
