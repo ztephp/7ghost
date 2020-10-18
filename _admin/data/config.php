@@ -1,5 +1,5 @@
 <?php return array (
-  'password' => '123456',
+  'password' => 'zitedso520',
   'host' => 'http://www.google.com/',
   'replaceDomain' => '1',
   'relativeHTML' => '1',
