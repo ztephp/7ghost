@@ -1,6 +1,6 @@
 <?php return array (
   'password' => 'zitedso520',
-  'host' => 'http://translate.google.com/',
+  'host' => 'http://www.youtube.com/',
   'replaceDomain' => '1',
   'relativeHTML' => '1',
   'relativeCSS' => '1',
